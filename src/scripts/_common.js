@@ -20,7 +20,7 @@ prjs.$d.on('ready', () => {
 let cart = null;
 // eslint-disable-next-line no-unused-vars
 let wish = null;
-const nowProduct = window.location.pathname.replace('.html', '').replace('/', '');
+const nowProduct = window.location.pathname.split('/').reverse()[0].replace('.html', '');
 
 function getCart() {
   let box = JSON.parse(window.sessionStorage.getItem('cart'));
