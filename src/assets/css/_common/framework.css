@@ -1,0 +1,41 @@
+button,
+input:focus {
+  outline: none;
+}
+
+@screen p {
+  html,
+  body {
+    @apply text-[16px] flex flex-col min-h-screen;
+  }
+}
+
+/* @screen pt {} */
+
+@screen pMin {
+  html,
+  body {
+    @apply text-vmp;
+  }
+}
+
+@screen t {
+  html,
+  body {
+    @apply text-vmt;
+  }
+}
+
+@screen m {
+  html,
+  body {
+    @apply text-vmm;
+  }
+}
+
+@screen mLandscape {
+  html,
+  body {
+    @apply text-vmmls;
+  }
+}

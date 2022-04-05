@@ -1,0 +1,142 @@
+<%
+  const TITLENAME = '電商購物平台';
+  const TITLE = htmlWebpackPlugin.options.title !== 'Webpack App' ? htmlWebpackPlugin.options.title : TITLENAME;
+  const action = htmlWebpackPlugin.options.action;
+  const COPYRIGHT = '© COPYRIGHT.';
+  const fileName = /(.*)(?=\.html$)/.exec(htmlWebpackPlugin.options.filename)[1];
+  const reqFile = require('../'+ fileName +'.ejs')({
+                    'htmlWebpackPlugin' : htmlWebpackPlugin
+                  });
+-%>
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+    <title><%- TITLE %></title>
+    <link rel="shortcut icon" type="image/x-icon" href="static/img/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="l-wrap mx-auto">
+      <% if (action === 'index' || action === 'category') { -%>
+        <header class="l-header w-[375px] fixed top-0 left-1/2 -translate-x-1/2 z-10">
+          <h1 class="sr-only"><%- TITLE %></h1>
+          <div class="flex bg-[#d41c1c] pr-[16px] py-[8px]">
+            <%- require('component/img.ejs')({
+              style: {
+                main: 'activeBtn relative flex-shrink w-[43px] h-[45px] mr-[8px] jMenuCtrl'
+              },
+              path: require('imgs/common/icon_menu.png'),
+              alt: 'menu'
+            }) %>
+            <div class="activeBtn relative flex flex-grow items-center bg-white px-[8px] py-[4px]">
+              <input type="text" class="jSearch w-full" />
+              <%- require('component/img.ejs')({
+                style: {
+                  main: 'w-[18px] h-[22px]'
+                },
+                path: require('imgs/common/icon_search.png'),
+                alt: 'search'
+              }) %>
+            </div>
+          </div>
+          <div class="m-menu absolute top-0 h-screen w-full bg-white jMenu">
+            <%- require('component/img.ejs')({
+              style: {
+                main: 'w-[375px] h-[639px]'
+              },
+              path: require('imgs/common/search.png'),
+              alt: 'search pannel'
+            }) %>
+            <input type="text" placeholder="請輸入您想找的商品" class="activeBtn jSearch bg-[#e7e7e7] absolute top-0 right-0 mt-[10px] mr-[49px] w-[260px] h-[36px]" />
+            <button class="activeBtn absolute top-0 left-0 mt-[6px] ml-[4px] w-[45px] h-[45px] jMenuCtrl" type="button"></button>
+            <a class="activeBtn absolute top-0 mt-[94px] ml-[30px] w-[162px] h-[64px]" href="category.html"></a>
+          </div>
+        </header>
+      <% } -%>
+      <main class="l-main">
+        <%- reqFile %>
+      </main>
+      <% if (action.indexOf('product') === -1) { -%>
+        <% const footer = [{
+          href: 'index.html',
+          target: 'index',
+          img: require('imgs/common/icon_home.png'),
+          active_img: require('imgs/common/icon_home_active.png'),
+          alt: 'home',
+          title: '首頁'
+        }, {
+          href: 'category.html',
+          target: 'category',
+          img: require('imgs/common/icon_category.png'),
+          active_img: require('imgs/common/icon_category_active.png'),
+          alt: 'category',
+          title: '分類'
+        }, {
+          href: 'wish.html',
+          target: 'wish',
+          img: require('imgs/common/icon_heart.png'),
+          active_img: require('imgs/common/icon_heart_active.png'),
+          alt: 'wish',
+          title: '心願單'
+        }, {
+          href: '#',
+          img: require('imgs/common/icon_profile.png'),
+          alt: 'profile',
+          title: '我的'
+        }, {
+          href: 'shoppingCart.html',
+          target: 'shoppingCart',
+          img: require('imgs/common/icon_cart.png'),
+          active_img: require('imgs/common/icon_cart_active.png'),
+          alt: 'shoppingCart',
+          title: '購物車'
+        }
+        ]; -%>
+        <footer class="l-footer w-[375px] fixed bottom-0 left-1/2 -translate-x-1/2 bg-white">
+          <ul class="flex items-center h-[70px]">
+            <% for( let i = 0; i < footer.length; i++ ) { %>
+              <% const {href, target, img, active_img, alt, title} = footer[i]; -%>
+              <li class="w-1/5">
+                <% if (typeof target === 'undefined' || action.indexOf(target) === -1) { -%>
+                  <a class="<%- alt === 'profile' ? '' : 'activeBtn ' %>relative flex flex-col justify-center items-center w-full h-full text-[14px] text-[#898989]" href="<%-href %>">
+                    <%- require('component/img.ejs')({
+                      style: {
+                        main: 'w-[26px] h-[24px] mb-[4px]'
+                      },
+                      path: img,
+                      alt: alt
+                    }) %>
+                    <%- title %>
+                  </a>
+                <% } else { -%>
+                  <a class="flex flex-col justify-center items-center w-full h-full text-[14px] text-[#d41c1c]" href="<%-href %>">
+                    <%- require('component/img.ejs')({
+                      style: {
+                        main: 'w-[26px] h-[24px] mb-[4px]'
+                      },
+                      path: active_img,
+                      alt: alt
+                    }) %>
+                    <%- title %>
+                  </a>
+                <% } -%>
+              </li>
+            <% } %>
+          </ul>
+        </footer>
+      <% } -%>
+    </div>
+  </body>
+</html>

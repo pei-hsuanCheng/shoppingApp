@@ -1,0 +1,170 @@
+<div class="jCartList pt-[20px] pb-[120px] hidden">
+  <h3 class="text-[20px] text-[#878787] px-[14px] mb-[16px]">購物車</h3>
+  <div class="mb-[20px] px-[14px]">
+    <label class="activeBtn relative flex items-center leading-[0.7] cursor-pointer">
+      <input class="jCheckAll hidden" checked type="checkbox" />
+      <span class="relative checkbox"></span>
+      <p class="ml-[8px] text-[14px]">全選</p>
+    </label>
+  </div>
+  <ul class="jList overflow-hidden">
+    <li class="activeBtn relative listItem hidden tracking-[-4px] whitespace-nowrap border-b border-[#e7e7e7] border-solid" data-type="appleWatch">
+      <div class="inline-flex tracking-normal whitespace-normal w-screen items-center py-[20px]">
+        <label class="flex-shrink mx-[14px] leading-[0.7] cursor-pointer">
+          <input class="hidden" checked type="checkbox" />
+          <span class="checkbox relative"></span>
+        </label>
+        <a href="appleWatch.html">
+          <%- require('component/img.ejs')({
+            style: {
+              main: 'flex-shrink w-[84px] h-[84px] mx-[14px]'
+            },
+            path: require('imgs/cart/applewatch.png'),
+            alt: 'Apple Watch Series 7 GPS 41mm'
+          }) %>
+        </a>
+        <div class="flex-grow pr-[14px]">
+          <a href="appleWatch.html" class="text-[16px]">Apple Watch Series 7 GPS 41mm</a>
+          <p class="text-[#d41c1c] text-[12px]">
+            $<span class="text-[18px] font-black">399</span>
+          </p>
+          <div class="flex">
+            <button class="jminus w-[26px] h-[26px] border border-[#e7e7e7] border-solid" type="button">-</button>
+            <p class="jQuantity border-t border-b border-[#e7e7e7] border-solid px-[16px]">1</p>
+            <button class="jAdd w-[26px] h-[26px] border border-[#e7e7e7] border-solid" type="button">+</button>
+          </div>
+        </div>
+      </div>
+      <button class="jDeleteBtn whitespace-pre-wrap w-[54px] h-[142px] align-top px-[16px] bg-[#d41c1c] text-white text-[16px]" type="button">刪除</button>
+    </li>
+    <li class="activeBtn relative listItem hidden tracking-[-4px] whitespace-nowrap border-b border-[#e7e7e7] border-solid" data-type="jpMouthwash">
+      <div class="inline-flex tracking-normal whitespace-normal w-screen items-center py-[20px]">
+        <label class="flex-shrink mx-[14px] leading-[0.7] cursor-pointer">
+          <input class="hidden" checked type="checkbox" />
+          <span class="checkbox relative"></span>
+        </label>
+        <a href="jpMouthwash.html">
+          <%- require('component/img.ejs')({
+            style: {
+              main: 'flex-shrink w-[84px] h-[84px] mx-[14px]'
+            },
+            path: require('imgs/cart/mouthwash2.png'),
+            alt: '日本固齒嘉酵素漱口水 450ml'
+          }) %>
+        </a>
+        <div class="flex-grow pr-[14px]">
+          <a href="jpMouthwash.html" class="text-[16px]">日本固齒嘉酵素漱口水 450ml</a>
+          <p class="text-[#d41c1c] text-[12px]">
+            $<span class="text-[18px] font-black">399</span>
+          </p>
+          <div class="flex">
+            <button class="jminus w-[26px] h-[26px] border border-[#e7e7e7] border-solid" type="button">-</button>
+            <p class="jQuantity border-t border-b border-[#e7e7e7] border-solid px-[16px]">1</p>
+            <button class="jAdd w-[26px] h-[26px] border border-[#e7e7e7] border-solid" type="button">+</button>
+          </div>
+        </div>
+      </div>
+      <button class="jDeleteBtn whitespace-pre-wrap w-[54px] h-[142px] align-top px-[16px] bg-[#d41c1c] text-white text-[16px]" type="button">刪除</button>
+    </li>
+    <li class="activeBtn relative listItem hidden tracking-[-4px] whitespace-nowrap border-b border-[#e7e7e7] border-solid" data-type="macbook">
+      <div class="inline-flex tracking-normal whitespace-normal w-screen items-center py-[20px]">
+        <label class="flex-shrink mx-[14px] leading-[0.7] cursor-pointer">
+          <input class="hidden" checked type="checkbox" />
+          <span class="checkbox relative"></span>
+        </label>
+        <a href="macbook.html">
+          <%- require('component/img.ejs')({
+            style: {
+              main: 'flex-shrink w-[84px] h-[84px] mx-[14px]'
+            },
+            path: require('imgs/cart/macbook.png'),
+            alt: 'MacBook Pro 13吋太空灰色'
+          }) %>
+        </a>
+        <div class="flex-grow pr-[14px]">
+          <a href="macbook.html" class="text-[16px]">MacBook Pro 13吋太空灰色</a>
+          <p class="text-[#d41c1c] text-[12px]">
+            $<span class="text-[18px] font-black">699</span>
+          </p>
+          <div class="flex">
+            <button class="jminus w-[26px] h-[26px] border border-[#e7e7e7] border-solid" type="button">-</button>
+            <p class="jQuantity border-t border-b border-[#e7e7e7] border-solid px-[16px]">1</p>
+            <button class="jAdd w-[26px] h-[26px] border border-[#e7e7e7] border-solid" type="button">+</button>
+          </div>
+        </div>
+      </div>
+      <button class="jDeleteBtn whitespace-pre-wrap w-[54px] h-[142px] align-top px-[16px] bg-[#d41c1c] text-white text-[16px]" type="button">刪除</button>
+    </li>
+    <li class="activeBtn relative listItem hidden tracking-[-4px] whitespace-nowrap border-b border-[#e7e7e7] border-solid" data-type="milkpowder">
+      <div class="inline-flex tracking-normal whitespace-normal w-screen items-center py-[20px]">
+        <label class="flex-shrink mx-[14px] leading-[0.7] cursor-pointer">
+          <input class="hidden" checked type="checkbox" />
+          <span class="checkbox relative"></span>
+        </label>
+        <a href="milkpowder.html">
+          <%- require('component/img.ejs')({
+            style: {
+              main: 'flex-shrink w-[84px] h-[84px] mx-[14px]'
+            },
+            path: require('imgs/cart/milkpowder.png'),
+            alt: '克寧100%純生乳奶粉 2.3kg'
+          }) %>
+        </a>
+        <div class="flex-grow pr-[14px]">
+          <a href="milkpowder.html" class="text-[16px]">克寧100%純生乳奶粉 2.3kg</a>
+          <p class="text-[#d41c1c] text-[12px]">
+            $<span class="text-[18px] font-black">699</span>
+          </p>
+          <div class="flex">
+            <button class="jminus w-[26px] h-[26px] border border-[#e7e7e7] border-solid" type="button">-</button>
+            <p class="jQuantity border-t border-b border-[#e7e7e7] border-solid px-[16px]">1</p>
+            <button class="jAdd w-[26px] h-[26px] border border-[#e7e7e7] border-solid" type="button">+</button>
+          </div>
+        </div>
+      </div>
+      <button class="jDeleteBtn whitespace-pre-wrap w-[54px] h-[142px] align-top px-[16px] bg-[#d41c1c] text-white text-[16px]" type="button">刪除</button>
+    </li>
+    <li class="activeBtn relative listItem hidden tracking-[-4px] whitespace-nowrap border-b border-[#e7e7e7] border-solid" data-type="mouthwash">
+      <div class="inline-flex tracking-normal whitespace-normal w-screen items-center py-[20px]">
+        <label class="flex-shrink mx-[14px] leading-[0.7] cursor-pointer">
+          <input class="hidden" checked type="checkbox" />
+          <span class="checkbox relative"></span>
+        </label>
+        <a href="mouthwash.html">
+          <%- require('component/img.ejs')({
+            style: {
+              main: 'flex-shrink w-[84px] h-[84px] mx-[14px]'
+            },
+            path: require('imgs/cart/mouthwash.png'),
+            alt: '黑人 全亮白極致漱口水250ml'
+          }) %>
+        </a>
+        <div class="flex-grow pr-[14px]">
+          <a href="mouthwash.html" class="text-[16px]">黑人 全亮白極致漱口水250ml</a>
+          <p class="text-[#d41c1c] text-[12px]">
+            $<span class="text-[18px] font-black">99</span>
+          </p>
+          <div class="flex">
+            <button class="jminus w-[26px] h-[26px] border border-[#e7e7e7] border-solid" type="button">-</button>
+            <p class="jQuantity border-t border-b border-[#e7e7e7] border-solid px-[16px]">1</p>
+            <button class="jAdd w-[26px] h-[26px] border border-[#e7e7e7] border-solid" type="button">+</button>
+          </div>
+        </div>
+      </div>
+      <button class="jDeleteBtn whitespace-pre-wrap w-[54px] h-[142px] align-top px-[16px] bg-[#d41c1c] text-white text-[16px]" type="button">刪除</button>
+    </li>
+  </ul>
+  <div class="flex justify-end p-[14px]">
+    總計&nbsp;
+    <p class="text-[#d41c1c] text-[12px]">
+      $&nbsp;<span class="jPrice text-[18px] font-black">0</span>
+    </p>
+  </div>
+  <div class="fixed w-[375px] bottom-[80px] left-1/2 -translate-x-1/2 px-[14px]">
+    <button class="block w-full py-[8px] bg-[#d41c1c] text-white text-[16px] rounded-[20px]" type="button">去買單</button>
+  </div>
+</div>
+<div class="jCartNull pt-[20px] pb-[120px] hidden">
+  <h3 class="text-[20px] text-[#878787] px-[14px] mb-[16px]">購物車</h3>
+  <p class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap mt-[-50px] text-[36px] text-[#dcdcdc] text-center">購物車空蕩蕩的</p>
+</div>
