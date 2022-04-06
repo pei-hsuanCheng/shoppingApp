@@ -3,6 +3,7 @@ import '../_common';
 
 let price = 0;
 let wish = null;
+let addToCartList = ['appleWatch', 'jpMouthwash', 'macbook', 'milkpowder', 'mouthwash'];
 $(document).ready(()=> {
   wish = JSON.parse(window.sessionStorage.getItem('wish'));
 
@@ -19,8 +20,8 @@ $(document).ready(()=> {
   $('.jPrice').text(price);
 
   Object.keys(wish).forEach((key) => {
-    $(`[data-type='${key}']`).removeClass('hidden');
-    $(`[data-type='${key}'] .jQuantity`).text(wish[key].quantity);
+    $(`li[data-type='${key}']`).removeClass('hidden');
+    $(`li[data-type='${key}'] .jQuantity`).text(wish[key].quantity);
   });
 });
 
@@ -28,8 +29,10 @@ $(document).on('click', '.jCheckAll', (e) => {
   const $this = $(e.currentTarget);
   if (!$this.prop('checked')) {
     $('input[type="checkbox"]').prop('checked', false);
+    addToCartList = [];
   } else {
     $('input[type="checkbox"]').prop('checked', true);
+    addToCartList = ['appleWatch', 'jpMouthwash', 'macbook', 'milkpowder', 'mouthwash'];
   }
 });
 
@@ -37,6 +40,9 @@ $(document).on('click', 'input[type="checkbox"]:not(.jCheckAll)', (e) => {
   const $this = $(e.currentTarget);
   if (!$this.prop('checked')) {
     $('.jCheckAll').prop('checked', false);
+    addToCartList.splice(addToCartList.indexOf($this.data('type')), 1);
+  } else {
+    addToCartList.push($this.data('type'));
   }
   if ($('input[type="checkbox"]:not(:checked)').length === 1) {
     $('.jCheckAll').prop('checked', true);
@@ -54,7 +60,7 @@ $(document).on('click', '.jminus', (e) => {
 
   if (wish[target].quantity === 0) {
     delete wish[target];
-    $(`[data-type='${target}']`).addClass('hidden');
+    $(`li[data-type='${target}']`).addClass('hidden');
   }
 
   if (!Object.keys(wish).length) {
@@ -68,18 +74,22 @@ $(document).on('click', '.jminus', (e) => {
 $(document).on('click', '.jAddToCart', () => {
   const cart = JSON.parse(window.sessionStorage.getItem('cart')) || {};
 
-  Object.keys(wish).forEach((key) => {
+  addToCartList.forEach((key) => {
     if (cart && cart[key]) {
       cart[key].quantity += wish[key].quantity;
     } else {
       cart[key] = wish[key];
     }
+    $(`li[data-type='${key}']`).addClass('hidden');
+    delete wish[key];
   });
 
+  if (Object.keys(wish).length === 0) {
+    $('.jWishList').addClass('hidden');
+    $('.jWishNull').removeClass('hidden');
+  }
+  window.sessionStorage.setItem('wish', JSON.stringify(wish));
   window.sessionStorage.setItem('cart', JSON.stringify(cart));
-  window.sessionStorage.removeItem('wish');
-  $('.jWishList').addClass('hidden');
-  $('.jWishNull').removeClass('hidden');
 });
 
 $(document).on('click', '.jAdd', (e) => {
