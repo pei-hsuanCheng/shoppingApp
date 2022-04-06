@@ -70,7 +70,7 @@ $(document).on('click', '.jAddToCart', () => {
 
   Object.keys(wish).forEach((key) => {
     if (cart && cart[key]) {
-      cart[key].quantity += wish[key];
+      cart[key].quantity += wish[key].quantity;
     } else {
       cart[key] = wish[key];
     }
