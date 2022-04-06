@@ -66,16 +66,17 @@ $(document).on('click', '.jminus', (e) => {
 });
 
 $(document).on('click', '.jAddToCart', () => {
-  const cart = JSON.parse(window.sessionStorage.getItem('wish'));
+  const cart = JSON.parse(window.sessionStorage.getItem('cart')) || {};
 
   Object.keys(wish).forEach((key) => {
-    if (cart[key]) {
+    if (cart && cart[key]) {
       cart[key].quantity += wish[key];
     } else {
       cart[key] = wish[key];
     }
   });
-  window.sessionStorage.setItem('wish', JSON.stringify(cart));
+
+  window.sessionStorage.setItem('cart', JSON.stringify(cart));
   window.sessionStorage.removeItem('wish');
   $('.jWishList').addClass('hidden');
   $('.jWishNull').removeClass('hidden');

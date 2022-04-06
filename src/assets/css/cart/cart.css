@@ -34,6 +34,6 @@ input[type="checkbox"]:checked {
   transition: 0.3s transform;
 
   &.active {
-    transform: translateX(-54px);
+    transform: translateX(-72px);
   }
 }

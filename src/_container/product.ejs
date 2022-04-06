@@ -47,20 +47,20 @@
     alt: alt
   }) %>
 </div>
-<footer class="m-product-ft w-[375px] fixed bottom-0 left-1/2 -translate-x-1/2 bg-white">
-  <ul class="flex h-[74px]">
+<footer class="m-product-ft w-[375px] fixed bottom-[70px] m:left-0 pt:left-1/2 pt:-translate-x-1/2 bg-white">
+  <ul class="flex h-[56px]">
     <li class="w-1/5">
       <button class="activeBtn relative jAddWish flex flex-col justify-center items-center w-full h-full text-[12px] text-[#898989]" type="button">
         <%- require('component/img.ejs')({
           style: {
-            main: 'relative iconWish w-[22px] h-[20px] mb-[4px] --outlined'
+            main: 'relative iconWish w-[22px] h-[20px] mt-[10px] mb-[4px] --outlined'
           },
           path: require('imgs/common/icon_heart.png'),
           alt: 'add to wish list'
         }) %>
         <%- require('component/img.ejs')({
           style: {
-            main: 'relative hidden iconWish w-[22px] h-[20px] mb-[4px] --filled'
+            main: 'relative hidden iconWish w-[22px] h-[20px] mt-[10px] mb-[4px] --filled'
           },
           path: require('imgs/common/icon_heart_filled.png'),
           alt: 'add to wish list'
@@ -72,7 +72,7 @@
       <button class="activeBtn relative jAddCart flex flex-col justify-center items-center w-full h-full text-[12px] text-[#898989]" type="button">
         <%- require('component/img.ejs')({
           style: {
-            main: 'relative iconCart w-[22px] h-[20px] mb-[4px]'
+            main: 'relative iconCart w-[22px] h-[20px] mt-[10px] mb-[4px]'
           },
           dataType: '0',
           path: require('imgs/common/icon_cart.png'),
@@ -82,7 +82,7 @@
       </button>
     </li>
     <li class="flex-grow">
-      <button class="activeBtn relative jAddCart flex flex-col justify-center items-center w-full h-full text-[14px] text-white bg-[#d41c1c] tracking-[5px]" type="button">
+      <button class="activeBtn relative jAddCart flex flex-col justify-center items-center w-full h-full text-[15px] text-white bg-[#d41c1c] tracking-[5px]" type="button">
         加入購物車
       </button>
     </li>
