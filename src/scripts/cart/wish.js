@@ -51,7 +51,6 @@ $(document).on('click', 'input[type="checkbox"]:not(.jCheckAll)', (e) => {
   if (addToCartList.length === Object.keys(wish).length) {
     $('.jCheckAll').prop('checked', true);
   }
-  console.log(addToCartList);
 });
 
 $(document).on('click', '.jminus', (e) => {
@@ -84,7 +83,7 @@ $(document).on('click', '.jAddToCart', () => {
     if (cart && cart[key]) {
       cart[key].quantity += wish[key].quantity;
     } else {
-      cart[key] = wish[key];
+      cart[key] = { ...wish[key] };
     }
     $(`li[data-type='${key}']`).addClass('hidden');
     delete wish[key];

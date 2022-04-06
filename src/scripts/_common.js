@@ -1,5 +1,5 @@
 import LazyLoad from 'vanilla-lazyload';
-import { prjs, svgRequire } from '_factory.js';
+import { prjs } from '_factory.js';
 import productInfo from './products.js';
 
 let lazyLoadFun = () => {
@@ -45,13 +45,12 @@ export const addProduct = (target) => {
   if (cart[newTarget]) {
     cart[newTarget].quantity += 1;
   } else {
-    cart[newTarget] = productInfo[newTarget];
+    cart[newTarget] = { ...productInfo[newTarget] };
   }
   let quantity = 0;
   Object.keys(cart).forEach((key) => {
     quantity += cart[key].quantity;
   });
-
   window.sessionStorage.setItem('cart', JSON.stringify(cart));
 
   return quantity;
@@ -61,11 +60,34 @@ function addWishProduct() {
   if (wish[nowProduct]) {
     delete wish[nowProduct];
   } else {
-    wish[nowProduct] = productInfo[nowProduct];
+    wish[nowProduct] = { ...productInfo[nowProduct] };
   }
 
   window.sessionStorage.setItem('wish', JSON.stringify(wish));
 }
+
+$(window).on('pageshow', () => {
+  const { quantity: cartQuant, box: cartList } = getCart();
+  const { box: wishList, alive } = getWish(nowProduct);
+  cart = cartList;
+  wish = wishList;
+  try {
+    document.querySelector('.iconCart').dataset.type = cartQuant;
+
+    if (cartQuant > 0) {
+      $('.jAddCart').addClass('active');
+    } else {
+      $('.jAddCart').removeClass('active');
+    }
+    if (alive) {
+      $('.jAddWish').addClass('active');
+    } else {
+      $('.jAddWish').removeClass('active');
+    }
+  } catch (e) {
+    console.log('not product page');
+  }
+});
 
 $(document).ready(() => {
   $('.jMenuCtrl').click(()=>{
@@ -83,7 +105,7 @@ $(document).ready(() => {
     if (cartQuant > 0) $('.jAddCart').addClass('active');
     if (alive) $('.jAddWish').addClass('active');
   } catch (e) {
-    console.log(e);
+    console.log('not product page');
   }
 });
 
