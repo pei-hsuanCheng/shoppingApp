@@ -3,7 +3,7 @@ import '../_common';
 
 let price = 0;
 let wish = null;
-let addToCartList = ['appleWatch', 'jpMouthwash', 'macbook', 'milkpowder', 'mouthwash'];
+let addToCartList = [];
 $(document).ready(()=> {
   wish = JSON.parse(window.sessionStorage.getItem('wish'));
 
@@ -22,6 +22,7 @@ $(document).ready(()=> {
   Object.keys(wish).forEach((key) => {
     $(`li[data-type='${key}']`).removeClass('hidden');
     $(`li[data-type='${key}'] .jQuantity`).text(wish[key].quantity);
+    addToCartList.push(key);
   });
 });
 
@@ -32,7 +33,9 @@ $(document).on('click', '.jCheckAll', (e) => {
     addToCartList = [];
   } else {
     $('input[type="checkbox"]').prop('checked', true);
-    addToCartList = ['appleWatch', 'jpMouthwash', 'macbook', 'milkpowder', 'mouthwash'];
+    Object.keys(wish).forEach((key) => {
+      addToCartList.push(key);
+    });
   }
 });
 
@@ -44,7 +47,7 @@ $(document).on('click', 'input[type="checkbox"]:not(.jCheckAll)', (e) => {
   } else {
     addToCartList.push($this.data('type'));
   }
-  if ($('input[type="checkbox"]:not(:checked)').length === 1) {
+  if (addToCartList.length === Object.keys(wish).length) {
     $('.jCheckAll').prop('checked', true);
   }
 });
@@ -61,6 +64,7 @@ $(document).on('click', '.jminus', (e) => {
   if (wish[target].quantity === 0) {
     delete wish[target];
     $(`li[data-type='${target}']`).addClass('hidden');
+    addToCartList.splice(addToCartList.indexOf(target), 1);
   }
 
   if (!Object.keys(wish).length) {
@@ -88,6 +92,7 @@ $(document).on('click', '.jAddToCart', () => {
     $('.jWishList').addClass('hidden');
     $('.jWishNull').removeClass('hidden');
   }
+  addToCartList = [];
   window.sessionStorage.setItem('wish', JSON.stringify(wish));
   window.sessionStorage.setItem('cart', JSON.stringify(cart));
 });
@@ -129,6 +134,7 @@ $(document).on('click', '.jDeleteBtn', (e) => {
   const target = $this.parents('li').data('type');
   price -= wish[target].quantity * wish[target].price;
   delete wish[target];
+  addToCartList.splice(addToCartList.indexOf(target), 1);
   window.sessionStorage.setItem('wish', JSON.stringify(wish));
   $('.jPrice').text(price);
   $this.parents('li').addClass('hidden');

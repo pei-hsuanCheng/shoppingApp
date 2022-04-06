@@ -3,6 +3,7 @@ import { addProduct } from '../_common';
 
 let price = 0;
 let cart = null;
+let addToBuy = [];
 $(document).ready(()=> {
   cart = JSON.parse(window.sessionStorage.getItem('cart'));
 
@@ -22,6 +23,7 @@ $(document).ready(()=> {
   Object.keys(cart).forEach((key) => {
     $(`[data-type='${key}']`).removeClass('hidden');
     $(`[data-type='${key}'] .jQuantity`).text(cart[key].quantity);
+    addToBuy.push(key);
   });
 });
 
@@ -29,8 +31,12 @@ $(document).on('click', '.jCheckAll', (e) => {
   const $this = $(e.currentTarget);
   if (!$this.prop('checked')) {
     $('input[type="checkbox"]').prop('checked', false);
+    addToBuy = [];
   } else {
     $('input[type="checkbox"]').prop('checked', true);
+    Object.keys(cart).forEach((key) => {
+      addToBuy.push(key);
+    });
   }
 });
 
@@ -38,8 +44,11 @@ $(document).on('click', 'input[type="checkbox"]:not(.jCheckAll)', (e) => {
   const $this = $(e.currentTarget);
   if (!$this.prop('checked')) {
     $('.jCheckAll').prop('checked', false);
+    addToBuy.splice(addToBuy.indexOf($this.data('type')), 1);
+  } else {
+    addToBuy.push($this.data('type'));
   }
-  if ($('input[type="checkbox"]:not(:checked)').length === 1) {
+  if (addToBuy.length === Object.keys(cart).length) {
     $('.jCheckAll').prop('checked', true);
   }
 });
@@ -56,6 +65,7 @@ $(document).on('click', '.jminus', (e) => {
   if (cart[target].quantity === 0) {
     delete cart[target];
     $(`[data-type='${target}']`).addClass('hidden');
+    addToBuy.splice(addToBuy.indexOf(target), 1);
   }
 
   if (!Object.keys(cart).length) {
@@ -101,6 +111,7 @@ $(document).on('click', '.jDeleteBtn', (e) => {
   const target = $this.parents('li').data('type');
   price -= cart[target].quantity * cart[target].price;
   delete cart[target];
+  addToBuy.splice(addToBuy.indexOf(target), 1);
   window.sessionStorage.setItem('cart', JSON.stringify(cart));
   $('.jPrice').text(price);
   $this.parents('li').addClass('hidden');
