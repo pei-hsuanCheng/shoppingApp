@@ -34,6 +34,7 @@ $(document).on('click', '.jCheckAll', (e) => {
     addToBuy = [];
   } else {
     $('input[type="checkbox"]').prop('checked', true);
+    addToBuy = [];
     Object.keys(cart).forEach((key) => {
       addToBuy.push(key);
     });

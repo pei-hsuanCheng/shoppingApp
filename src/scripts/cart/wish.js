@@ -33,6 +33,7 @@ $(document).on('click', '.jCheckAll', (e) => {
     addToCartList = [];
   } else {
     $('input[type="checkbox"]').prop('checked', true);
+    addToCartList = [];
     Object.keys(wish).forEach((key) => {
       addToCartList.push(key);
     });
@@ -50,6 +51,7 @@ $(document).on('click', 'input[type="checkbox"]:not(.jCheckAll)', (e) => {
   if (addToCartList.length === Object.keys(wish).length) {
     $('.jCheckAll').prop('checked', true);
   }
+  console.log(addToCartList);
 });
 
 $(document).on('click', '.jminus', (e) => {
