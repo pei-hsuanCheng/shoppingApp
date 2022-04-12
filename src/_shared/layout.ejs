@@ -97,6 +97,7 @@
         href: 'shoppingCart.html',
         target: 'shoppingCart',
         img: require('imgs/common/icon_cart.png'),
+        className: 'iconCart',
         active_img: require('imgs/common/icon_cart_active.png'),
         alt: 'shoppingCart',
         title: '購物車'
@@ -105,13 +106,13 @@
       <footer class="l-footer w-[375px] fixed bottom-0 pt:left-1/2 m:left-0 pt:-translate-x-1/2 bg-white">
         <ul class="flex items-center h-[70px]">
           <% for( let i = 0; i < footer.length; i++ ) { %>
-            <% const {href, target, img, active_img, alt, title} = footer[i]; -%>
+            <% const {href, target, img, active_img, alt, title, className} = footer[i]; -%>
             <li class="w-1/5">
               <% if (typeof target === 'undefined' || action.indexOf(target) === -1) { -%>
                 <a class="<%- alt === 'profile' ? '' : 'activeBtn ' %>relative flex flex-col justify-center items-center w-full h-full text-[14px] text-[#898989]" href="<%-href %>">
                   <%- require('component/img.ejs')({
                     style: {
-                      main: 'w-[26px] h-[24px] mb-[4px]'
+                      main: `w-[26px] h-[24px] mb-[4px] ${className ? className : ''}`
                     },
                     path: img,
                     alt: alt

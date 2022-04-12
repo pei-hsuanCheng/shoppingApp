@@ -39,7 +39,7 @@
       <button class="text-[12px] text-white" type="button">顯示全部 ></button>
     </div>
     <div class="flex items-center overflow-x-scroll pl-[4px] py-[4px]">
-      <button type="button" class="mx-[2px]">
+      <a class="activeBtn relative mx-[2px]" href="sk2.html">
         <%- require('component/img.ejs')({
           style: {
             main: 'w-[131px] h-[173px]'
@@ -47,7 +47,7 @@
           path: require('imgs/home/onsale1.png'),
           alt: 'SK-II'
         }) %>
-      </button>
+      </a>
       <a class="activeBtn relative mx-[2px]" href="appleWatch.html">
         <%- require('component/img.ejs')({
           style: {
@@ -57,7 +57,7 @@
           alt: 'apple watch'
         }) %>
       </a>
-      <button type="button" class="mx-[2px]">
+      <a class="activeBtn relative mx-[2px]" href="furugura.html">
         <%- require('component/img.ejs')({
           style: {
             main: 'w-[131px] h-[173px]'
@@ -65,7 +65,7 @@
           path: require('imgs/home/onsale3.png'),
           alt: 'furugura 燕麥片'
         }) %>
-      </button>
+      </a>
     </div>
   </div>
   <div class="m-interest overflow-hidden">

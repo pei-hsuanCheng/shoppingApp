@@ -5,6 +5,9 @@ const jpMouthwash = require('./htmlPage/product/jpMouthwash.js');
 const mouthwash = require('./htmlPage/product/mouthwash.js');
 const macbook = require('./htmlPage/product/macbook.js');
 const milkpowder = require('./htmlPage/product/milkpowder.js');
+const sk2 = require('./htmlPage/product/sk2.js');
+const furugura = require('./htmlPage/product/furugura.js');
+const asus = require('./htmlPage/product/asus.js');
 const shoppingCart = require('./htmlPage/cart/shoppingCart.js');
 const wish = require('./htmlPage/cart/wish.js');
 
@@ -34,6 +37,9 @@ module.exports = {
       mouthwash.HtmlWebpackPlugin,
       macbook.HtmlWebpackPlugin,
       milkpowder.HtmlWebpackPlugin,
+      furugura.HtmlWebpackPlugin,
+      sk2.HtmlWebpackPlugin,
+      asus.HtmlWebpackPlugin,
       shoppingCart.HtmlWebpackPlugin,
       wish.HtmlWebpackPlugin
     );
@@ -47,6 +53,9 @@ module.exports = {
         mouthwash.HtmlWebpackPlugin,
         macbook.HtmlWebpackPlugin,
         milkpowder.HtmlWebpackPlugin,
+        furugura.HtmlWebpackPlugin,
+        sk2.HtmlWebpackPlugin,
+        asus.HtmlWebpackPlugin,
         shoppingCart.HtmlWebpackPlugin,
         wish.HtmlWebpackPlugin
       );

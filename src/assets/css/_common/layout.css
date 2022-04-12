@@ -14,6 +14,23 @@
   }
 }
 
+.iconCart {
+  &::before {
+    line-height: 1.6;
+    transform: translate(-50%, -50%);
+
+    @apply absolute top-1/2 left-1/2 mt-[-10px] ml-[-11px] w-[20px] h-[20px] rounded-full bg-[#d41c1c] text-white text-[12px];
+  }
+}
+
+.active {
+  &.iconCart {
+    &::before {
+      content: attr(data-type);
+    }
+  }
+}
+
 .activeBtn {
   &::before {
     content: "";

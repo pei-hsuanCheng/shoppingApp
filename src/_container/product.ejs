@@ -53,32 +53,19 @@
       <button class="activeBtn relative jAddWish flex flex-col justify-center items-center w-full h-full text-[12px] text-[#898989]" type="button">
         <%- require('component/img.ejs')({
           style: {
-            main: 'relative iconWish w-[22px] h-[20px] mt-[10px] mb-[4px] --outlined'
+            main: 'relative iconWish w-[22px] h-[19px] mt-[6px] mb-[4px] --outlined'
           },
-          path: require('imgs/common/icon_heart.png'),
+          path: require('imgs/product/icon_heart2.png'),
           alt: 'add to wish list'
         }) %>
         <%- require('component/img.ejs')({
           style: {
-            main: 'relative hidden iconWish w-[22px] h-[20px] mt-[10px] mb-[4px] --filled'
+            main: 'relative hidden iconWish w-[22px] h-[19px] mt-[6px] mb-[4px] --filled'
           },
-          path: require('imgs/common/icon_heart_filled.png'),
+          path: require('imgs/product/icon_heart2_filled.png'),
           alt: 'add to wish list'
         }) %>
-        心願單
-      </button>
-    </li>
-    <li class="w-1/5">
-      <button class="activeBtn relative jAddCart flex flex-col justify-center items-center w-full h-full text-[12px] text-[#898989]" type="button">
-        <%- require('component/img.ejs')({
-          style: {
-            main: 'relative iconCart w-[22px] h-[20px] mt-[10px] mb-[4px]'
-          },
-          dataType: '0',
-          path: require('imgs/common/icon_cart.png'),
-          alt: 'add to cart'
-        }) %>
-        購物車
+        加入心願單
       </button>
     </li>
     <li class="flex-grow">
@@ -88,3 +75,13 @@
     </li>
   </ul>
 </footer>
+<div class="popup jpopup fixed mt-[-120px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] h-[54px] flex justify-center items-center rounded-[8px] bg-white border border-[#b9b9b9]">
+  <%- require('component/img.ejs')({
+    style: {
+      main: 'w-[26px] h-[23px] mr-[12px]'
+    },
+    path: require('imgs/product/icon_cart_black.png'),
+    alt: 'add to cart success'
+  }) %>
+  <p class="text-[15px] text-[#262626] tracking-[5px] font-bold leading-[1]">已選購</p>
+</div>

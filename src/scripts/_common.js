@@ -112,9 +112,12 @@ $(document).ready(() => {
 $(document).on('click', '.jBack', () => window.history.go(-1));
 
 $(document).on('click', '.jAddCart', () => {
-  if (!$('.jAddCart').hasClass('active')) {
-    $('.jAddCart').addClass('active');
+  if (!$('.iconCart').hasClass('active')) {
+    $('.iconCart').addClass('active');
   }
+
+  $('.jpopup').addClass('anim');
+
   const quantity = addProduct();
   document.querySelector('.iconCart').dataset.type = quantity;
 });
