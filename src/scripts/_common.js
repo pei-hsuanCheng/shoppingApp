@@ -116,7 +116,19 @@ $(document).on('click', '.jAddCart', () => {
     $('.iconCart').addClass('active');
   }
 
-  $('.jpopup').addClass('anim');
+  if (!$('.jpopup').hasClass('anim')) {
+    $('.jpopup').addClass('anim');
+    const timer = setInterval(() => {
+      $('.jpopup').removeClass('anim');
+      clearInterval(timer);
+    }, 2000);
+  } else {
+    $('.jpopup').removeClass('anim');
+    const timer = setInterval(() => {
+      $('.jpopup').addClass('anim');
+      clearInterval(timer);
+    }, 100);
+  }
 
   const quantity = addProduct();
   document.querySelector('.iconCart').dataset.type = quantity;
