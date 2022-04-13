@@ -75,9 +75,9 @@ $(window).on('pageshow', () => {
     document.querySelector('.iconCart').dataset.type = cartQuant;
 
     if (cartQuant > 0) {
-      $('.jAddCart').addClass('active');
+      $('.iconCart').addClass('active');
     } else {
-      $('.jAddCart').removeClass('active');
+      $('.iconCart').removeClass('active');
     }
     if (alive) {
       $('.jAddWish').addClass('active');
@@ -102,7 +102,7 @@ $(document).ready(() => {
   try {
     document.querySelector('.iconCart').dataset.type = cartQuant;
 
-    if (cartQuant > 0) $('.jAddCart').addClass('active');
+    if (cartQuant > 0) $('.iconCart').addClass('active');
     if (alive) $('.jAddWish').addClass('active');
   } catch (e) {
     console.log('not product page');
