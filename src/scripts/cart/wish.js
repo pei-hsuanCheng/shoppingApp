@@ -78,13 +78,14 @@ $(document).on('click', '.jminus', (e) => {
 
 $(document).on('click', '.jAddToCart', () => {
   const cart = JSON.parse(window.sessionStorage.getItem('cart')) || {};
-
+  let cartQuantity = parseInt(document.querySelector('.iconCart').dataset.type, 10);
   addToCartList.forEach((key) => {
     if (cart && cart[key]) {
       cart[key].quantity += wish[key].quantity;
     } else {
       cart[key] = { ...wish[key] };
     }
+    cartQuantity += wish[key].quantity;
     $(`li[data-type='${key}']`).addClass('hidden');
     delete wish[key];
   });
@@ -96,6 +97,12 @@ $(document).on('click', '.jAddToCart', () => {
   addToCartList = [];
   window.sessionStorage.setItem('wish', JSON.stringify(wish));
   window.sessionStorage.setItem('cart', JSON.stringify(cart));
+  document.querySelector('.iconCart').dataset.type = cartQuantity;
+  if (cartQuantity > 0) {
+    $('.iconCart').addClass('active');
+  } else {
+    $('.iconCart').removeClass('active');
+  }
 });
 
 $(document).on('click', '.jAdd', (e) => {

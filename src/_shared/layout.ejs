@@ -120,10 +120,10 @@
                   <%- title %>
                 </a>
               <% } else { -%>
-                <a class="flex flex-col justify-center items-center w-full h-full text-[14px] text-[#d41c1c]" href="<%-href %>">
+                <a class="relative flex flex-col justify-center items-center w-full h-full text-[14px] text-[#d41c1c]" href="<%-href %>">
                   <%- require('component/img.ejs')({
                     style: {
-                      main: 'w-[26px] h-[24px] mb-[4px]'
+                      main: `w-[26px] h-[24px] mb-[4px] ${className ? className : ''}`
                     },
                     path: active_img,
                     alt: alt

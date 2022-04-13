@@ -4,6 +4,7 @@ import { addProduct } from '../_common';
 let price = 0;
 let cart = null;
 let addToBuy = [];
+let cartQuant = 0;
 $(document).ready(()=> {
   cart = JSON.parse(window.sessionStorage.getItem('cart'));
 
@@ -16,9 +17,11 @@ $(document).ready(()=> {
 
   Object.keys(cart).forEach((key) => {
     price += cart[key].quantity * cart[key].price;
+    cartQuant += cart[key].quantity;
   });
 
   $('.jPrice').text(price);
+  document.querySelector('.iconCart').dataset.type = cartQuant;
 
   Object.keys(cart).forEach((key) => {
     $(`[data-type='${key}']`).removeClass('hidden');
@@ -59,6 +62,15 @@ $(document).on('click', '.jminus', (e) => {
   const target = $this.parents('li').data('type');
 
   cart[target].quantity -= 1;
+
+  cartQuant -= 1;
+  document.querySelector('.iconCart').dataset.type = cartQuant;
+  if (cartQuant > 0) {
+    $('.iconCart').addClass('active');
+  } else {
+    $('.iconCart').removeClass('active');
+  }
+
   $this.siblings('.jQuantity').text(cart[target].quantity);
   price -= cart[target].price;
   $('.jPrice').text(price);
@@ -84,6 +96,9 @@ $(document).on('click', '.jAdd', (e) => {
   cart = JSON.parse(window.sessionStorage.getItem('cart'));
   $this.siblings('.jQuantity').text(cart[target].quantity);
   price += cart[target].price;
+  cartQuant += 1;
+  document.querySelector('.iconCart').dataset.type = cartQuant;
+  $('.iconCart').addClass('active');
   $('.jPrice').text(price);
 });
 
@@ -111,6 +126,8 @@ $(document).on('click', '.jDeleteBtn', (e) => {
   const $this = $(e.currentTarget);
   const target = $this.parents('li').data('type');
   price -= cart[target].quantity * cart[target].price;
+  cartQuant -= cart[target].quantity;
+  document.querySelector('.iconCart').dataset.type = cartQuant;
   delete cart[target];
   addToBuy.splice(addToBuy.indexOf(target), 1);
   window.sessionStorage.setItem('cart', JSON.stringify(cart));
@@ -120,5 +137,10 @@ $(document).on('click', '.jDeleteBtn', (e) => {
   if (!Object.keys(cart).length) {
     $('.jCartList').addClass('hidden');
     $('.jCartNull').removeClass('hidden');
+  }
+  if (cartQuant > 0) {
+    $('.iconCart').addClass('active');
+  } else {
+    $('.iconCart').removeClass('active');
   }
 });
